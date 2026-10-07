@@ -381,6 +381,42 @@ export default function Projects() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.1} className="mt-10">
+          <aside
+            aria-labelledby="partenariat-titre"
+            className="flex flex-wrap items-center justify-between gap-x-8 gap-y-5 rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-6 md:p-8"
+          >
+            <div className="max-w-[60ch]">
+              <p className="text-sm font-medium text-sky-200">Partenariat</p>
+              <h3
+                id="partenariat-titre"
+                className="mt-2 font-display text-lg font-semibold text-zinc-50"
+              >
+                Je collabore avec Marc Sylvinho Tsafack
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                Étudiant ingénieur en cybersécurité à l’ESAIP Angers, certifié
+                SOC Analyst et Jr Penetration Tester sur TryHackMe, et fondateur
+                d’ANANSI.
+              </p>
+            </div>
+            <a
+              href="https://portfolio-marcsylvinho.pages.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 text-sm font-semibold text-zinc-100 transition-colors duration-300 hover:border-indigo-400/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+            >
+              Voir son portfolio
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover/link:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+          </aside>
+        </Reveal>
       </div>
     </section>
   );
