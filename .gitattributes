@@ -1,0 +1,2 @@
+# Les PDF ne sont pas du texte : aucune conversion de fins de ligne.
+*.pdf binary
