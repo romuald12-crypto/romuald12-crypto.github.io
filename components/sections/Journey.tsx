@@ -52,6 +52,7 @@ const journey: Step[] = [
       "Maintenance des serveurs, routeurs et switchs.",
       "Diagnostic réseau et support utilisateurs niveau 2/3.",
       "Surveillance des logs et rédaction de procédures.",
+      "Développement d’applications web internes.",
     ],
   },
   {

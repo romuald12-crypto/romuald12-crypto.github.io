@@ -92,6 +92,7 @@ const projects: Project[] = [
       "Diagnostic et résolution de problèmes réseau, support utilisateurs et assistance technique.",
       "Surveillance de l’infrastructure et des logs.",
       "Rédaction de documentation technique et de procédures.",
+      "Développement d’applications web internes.",
     ],
     tags: [
       "Administration réseau",
@@ -149,6 +150,9 @@ const projects: Project[] = [
       "Power BI",
       "Power Pages",
       "Microsoft Entra ID",
+      "Dynamics 365",
+      "Azure",
+      ".NET",
     ],
     status: "Juillet – Septembre 2026",
   },
