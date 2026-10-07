@@ -25,7 +25,7 @@ const commands: Command[] = [
   {
     cmd: "cat objectif.txt",
     output: [
-      "Alternance en cybersécurité",
+      "Alternance pour intégrer un Master en cybersécurité",
       "Rythme : 2 semaines en entreprise, 2 semaines à l’école",
       "Disponible immédiatement, mobile en France",
     ],

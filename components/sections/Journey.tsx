@@ -220,8 +220,8 @@ export default function Journey() {
                     Prochaine étape, disponible immédiatement
                   </p>
                   <h3 className="mt-3 font-display text-lg font-semibold text-zinc-50">
-                    À la recherche d’une alternance en cybersécurité : votre
-                    entreprise ?
+                    À la recherche d’une alternance pour intégrer un Master en
+                    cybersécurité : votre entreprise ?
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-zinc-400">
                     Rythme de 2 semaines en entreprise et 2 semaines à l’école,

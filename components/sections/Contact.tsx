@@ -108,8 +108,8 @@ export default function Contact() {
         <div className="mt-12 grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <Reveal delay={0.1}>
             <p className="font-display text-2xl font-semibold leading-snug text-zinc-50">
-              À la recherche d’une alternance en cybersécurité, disponible
-              immédiatement.
+              À la recherche d’une alternance pour intégrer un Master en
+              cybersécurité, disponible immédiatement.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-zinc-400">
               Basé à Angers, mobile dans toute la France. Rythme de 2 semaines

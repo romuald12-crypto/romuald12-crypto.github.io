@@ -39,7 +39,8 @@ export default function About() {
             </p>
             <p className="mt-4 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-4 py-1.5 text-sm font-medium text-emerald-200">
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
-              À la recherche d’une alternance en cybersécurité
+              À la recherche d’une alternance pour intégrer un Master en
+              cybersécurité
             </p>
             <div className="mt-6 max-w-[62ch] space-y-4 text-base leading-relaxed text-zinc-300">
               <p>
@@ -81,8 +82,9 @@ export default function About() {
                 mes compétences.
               </p>
               <p>
-                Je recherche aujourd’hui une alternance en cybersécurité,
-                partout en France, et je suis disponible immédiatement. Si mon
+                Je recherche aujourd’hui une alternance pour intégrer un Master
+                en cybersécurité, partout en France, et je suis disponible
+                immédiatement. Si mon
                 profil vous intéresse, n’hésitez pas à{" "}
                 <a href="#projets" className={linkClass}>
                   parcourir mes projets

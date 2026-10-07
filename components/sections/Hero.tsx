@@ -3,7 +3,8 @@ import Reveal from "@/components/ui/Reveal";
 import ScrambleText from "@/components/ui/ScrambleText";
 
 const facts = [
-  { label: "Formation", value: "Bachelor 3 Cybersécurité, ESAIP Angers" },
+  { label: "Formation", value: "Bachelor 3 Cybersécurité (ESAIP Angers)" },
+  { label: "Objectif", value: "Master en cybersécurité, en alternance" },
   { label: "Rythme", value: "2 semaines en entreprise, 2 semaines à l’école" },
   { label: "Mobilité", value: "Toute la France" },
 ];
@@ -46,13 +47,14 @@ export default function Hero() {
           </Reveal>
           <Reveal delay={0.24}>
             <p className="mt-6 max-w-[58ch] text-base leading-relaxed text-slate-400 md:text-lg">
-              À la recherche d’une alternance en cybersécurité. Je pratique le
-              pentest sur des labs et je sécurise les applications que je
-              développe : contrôle d’accès, chiffrement, correction de failles.
+              À la recherche d’une alternance pour intégrer un Master en
+              cybersécurité. Je pratique le pentest sur des labs et je sécurise
+              les applications que je développe : contrôle d’accès,
+              chiffrement, correction de failles.
             </p>
           </Reveal>
           <Reveal delay={0.28}>
-            <dl className="mt-8 grid max-w-2xl gap-x-8 gap-y-5 border-t border-white/10 pt-6 sm:grid-cols-3">
+            <dl className="mt-8 grid max-w-2xl gap-x-8 gap-y-5 border-t border-white/10 pt-6 sm:grid-cols-2">
               {facts.map((fact) => (
                 <div key={fact.label}>
                   <dt className="text-sm text-slate-500">{fact.label}</dt>

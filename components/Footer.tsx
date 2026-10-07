@@ -33,7 +33,7 @@ export default function Footer() {
             </p>
             <p className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-4 py-1.5 text-sm font-medium text-emerald-200">
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
-              À la recherche d’une alternance en cybersécurité
+              À la recherche d’une alternance pour un Master en cybersécurité
             </p>
             <p className="mt-3 text-sm text-zinc-500">
               Disponible immédiatement, mobile dans toute la France.
