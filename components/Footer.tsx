@@ -1,3 +1,5 @@
+import { whatsappUrl } from "@/components/ui/WhatsAppButton";
+
 const navigation = [
   { href: "#accueil", label: "Accueil" },
   { href: "#a-propos", label: "À propos" },
@@ -10,6 +12,7 @@ const navigation = [
 const contacts = [
   { href: "mailto:mberomuald66@gmail.com", label: "mberomuald66@gmail.com" },
   { href: "tel:+33758406104", label: "+33 7 58 40 61 04" },
+  { href: whatsappUrl, label: "WhatsApp" },
   { href: "https://www.linkedin.com/in/mbe-romuald", label: "LinkedIn" },
   { href: "https://github.com/romuald12-crypto", label: "GitHub" },
   { href: "https://tryhackme.com/p/romualddior86", label: "TryHackMe" },

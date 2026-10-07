@@ -8,6 +8,7 @@ import Journey from "@/components/sections/Journey";
 import Contact from "@/components/sections/Contact";
 import Background from "@/components/ui/Background";
 import MotionProvider from "@/components/ui/MotionProvider";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           <Contact />
         </main>
         <Footer />
+        <WhatsAppButton />
       </div>
     </MotionProvider>
   );
