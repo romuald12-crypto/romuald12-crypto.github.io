@@ -106,6 +106,15 @@ export default function About() {
                 </div>
               ))}
             </dl>
+            <a
+              href="/toeic-romuald-mbe-signe.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 text-sm font-semibold text-zinc-100 transition-colors duration-300 hover:border-indigo-400/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+            >
+              <span aria-hidden="true">↗</span>
+              Voir mon attestation TOEIC (PDF)
+            </a>
           </Reveal>
 
           <Reveal variant="flip" delay={0.2} className="lg:sticky lg:top-24">
