@@ -18,10 +18,25 @@ const poppins = Poppins({
   weight: ["600", "700"],
 });
 
+const title = "Romuald Mbe Signe | Cybersécurité – À la recherche d’une alternance";
+const description =
+  "Portfolio de Romuald Mbe Signe, étudiant en cybersécurité à la recherche d’une alternance : pentest, DevSecOps et développement sécurisé. Disponible immédiatement.";
+
+// Le logo (favicon, icône Apple) et l'image d'aperçu de lien sont les fichiers
+// icon.png, apple-icon.png et opengraph-image.png de ce dossier.
 export const metadata: Metadata = {
-  title: "Romuald Mbe Signe | Cybersécurité – À la recherche d’une alternance",
-  description:
-    "Portfolio de Romuald Mbe Signe, étudiant en cybersécurité à la recherche d’une alternance : pentest, DevSecOps et développement sécurisé. Disponible immédiatement.",
+  metadataBase: new URL("https://romuald-mbe-signe.pages.dev"),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "/",
+    siteName: "Romuald Mbe Signe",
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export default function RootLayout({
