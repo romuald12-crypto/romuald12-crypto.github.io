@@ -114,8 +114,12 @@ export const skillGroups: SkillGroup[] = [
 export type Experience = {
   role: string;
   company: string;
-  period: string;
+  // Site de l'entreprise : le lien n'est affiche que s'il est renseigne.
+  url?: string;
+  // Absent tant que la periode n'est pas confirmee.
+  period?: string;
   place?: string;
+  // Sans logo, un repli avec les initiales de l'entreprise est affiche.
   logo?: { src: string; alt: string; width: number; height: number; dark?: boolean };
   points: string[];
   tech: string[];
@@ -126,6 +130,8 @@ export const experiences: Experience[] = [
   {
     role: "Stagiaire Ingénieur Logiciel, Cloud & Cybersécurité",
     company: "KARAYES GROUP SARL",
+    place: "Douala, Cameroun",
+    // TODO url : site de Karayes Group.
     period: "Juillet 2026 – Octobre 2026",
     logo: { src: "/logos/karayes.png", alt: "Logo Karayes Group", width: 200, height: 200, dark: true },
     points: [
@@ -147,8 +153,21 @@ export const experiences: Experience[] = [
     ],
   },
   {
+    role: "Développeur web freelance",
+    company: "RainaLyse Beauté",
+    // TODO url : site en ligne de RainaLyse Beauté.
+    period: "Juillet 2026 – Septembre 2026",
+    points: [
+      "Conception et développement d’une plateforme de réservation pour services beauté et coiffure.",
+      "Paiement de l’acompte avec Stripe et PayPal, espace client et espace d’administration.",
+      "Sécurité : Row Level Security Supabase, autorisations par rôle vérifiées côté serveur.",
+    ],
+    tech: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "Tailwind CSS"],
+  },
+  {
     role: "Stagiaire Développeur Full-Stack & Mobile",
     company: "Ejara",
+    url: "https://www.ejara.africa",
     period: "Mai 2025 – Août 2025",
     points: [
       "Développement de nouvelles fonctionnalités front-end (React, TypeScript) et back-end (Node.js), ainsi que des évolutions mobiles Android.",
@@ -157,9 +176,10 @@ export const experiences: Experience[] = [
     tech: ["React", "TypeScript", "Node.js", "Android", "SQL", "APIs REST"],
   },
   {
-    role: "Stagiaire Développeur IA & Prototypage",
+    role: "Stagiaire Développeur IA — prototypes d’assistants LLM",
     company: "ActivSpaces",
-    period: "Juin 2024 – Août 2024",
+    url: "https://activspaces.com",
+    period: "Mai 2025 – Août 2025",
     points: [
       "Conception de preuves de concept (PoC) d’agents IA et de pipelines RAG basés sur les LLMs (Claude, GPT) et LangChain.",
       "Automatisation de workflows avec n8n et Make, et intégration via APIs REST.",
@@ -167,23 +187,32 @@ export const experiences: Experience[] = [
     tech: ["LLMs", "RAG", "LangChain", "n8n", "Make", "APIs REST"],
   },
   {
-    role: "Stagiaire Développeur Web Front-End & Outils Métiers",
+    role: "Stagiaire Développeur Front-End Flutter & Outils Métiers",
     company: "Sigalix",
+    // TODO url : site de Sigalix.
     period: "Juin 2024 – Août 2024",
     points: [
-      "Développement d’interfaces web responsives et maintenance évolutive d’outils métiers.",
+      "Développement d’interfaces front-end avec Flutter et maintenance évolutive d’outils métiers.",
     ],
-    tech: ["HTML5", "CSS3", "JavaScript", "React"],
+    tech: ["Flutter", "Dart"],
   },
   {
     role: "Stagiaire Technicien Réseaux & Infrastructures Télécoms",
     company: "CAMTEL (Cameroon Telecommunications)",
+    url: "https://www.camtel.cm",
     period: "Juillet 2023 – Septembre 2023",
     logo: { src: "/logos/camtel.png", alt: "Logo Camtel", width: 200, height: 200 },
     points: [
       "Déploiement, configuration et maintenance des infrastructures réseaux et des accès internet (fibre, ADSL, TCP/IP) sous Windows et Linux.",
     ],
     tech: ["TCP/IP", "Fibre", "ADSL", "Windows", "Linux"],
+  },
+  {
+    // A completer : poste, periode et missions.
+    role: "Stage",
+    company: "Afrimax Technology",
+    points: [],
+    tech: [],
   },
 ];
 
