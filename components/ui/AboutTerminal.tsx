@@ -61,7 +61,7 @@ export default function AboutTerminal() {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#080a18]/90 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.9)]">
+    <div className="overflow-hidden rounded-2xl border border-white/10 bg-surface/90 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.9)]">
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5 font-mono text-xs text-zinc-500">
         <span>romuald@portfolio: ~</span>
         <button

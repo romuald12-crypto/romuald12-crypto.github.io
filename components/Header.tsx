@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const links = [
   { href: "#accueil", label: "Accueil" },
@@ -13,14 +14,44 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
+// Section actuellement a l'ecran : la derniere dont le haut a passe la ligne
+// de reperage situee a 35 % de la hauteur de la fenetre.
+function useActiveSection(ids: string[]) {
+  const [active, setActive] = useState(ids[0]);
+
+  useEffect(() => {
+    function update() {
+      const line = window.innerHeight * 0.35;
+      let current = ids[0];
+      for (const id of ids) {
+        const element = document.getElementById(id);
+        if (element && element.getBoundingClientRect().top <= line) current = id;
+      }
+      setActive(current);
+    }
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [ids]);
+
+  return active;
+}
+
+const sectionIds = links.map((link) => link.href.slice(1));
+
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const active = useActiveSection(sectionIds);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24 });
   const reduceMotion = useReducedMotion();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#05060f]/60 backdrop-blur-xl backdrop-saturate-150">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-background/60 backdrop-blur-xl backdrop-saturate-150">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6">
         <a
           href="#accueil"
@@ -46,10 +77,17 @@ export default function Header() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="group relative inline-flex min-h-11 items-center text-sm text-zinc-400 transition-colors duration-300 hover:text-zinc-50"
+                aria-current={active === link.href.slice(1) ? "location" : undefined}
+                className={`group relative inline-flex min-h-11 items-center text-sm transition-colors duration-300 hover:text-zinc-50 ${
+                  active === link.href.slice(1) ? "text-zinc-50" : "text-zinc-400"
+                }`}
               >
                 {link.label}
-                <span className="absolute inset-x-0 bottom-2 h-px origin-left scale-x-0 bg-gradient-to-r from-sky-400 to-violet-400 transition-transform duration-300 group-hover:scale-x-100" />
+                <span
+                  className={`absolute inset-x-0 bottom-2 h-px origin-left bg-gradient-to-r from-sky-400 to-violet-400 transition-transform duration-300 group-hover:scale-x-100 ${
+                    active === link.href.slice(1) ? "scale-x-100" : "scale-x-0"
+                  }`}
+                />
               </a>
             </li>
           ))}
@@ -63,6 +101,8 @@ export default function Header() {
           Alternance ou stage
         </a>
 
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
         <button
           type="button"
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
@@ -96,6 +136,7 @@ export default function Header() {
             )}
           </svg>
         </button>
+        </div>
       </nav>
 
       {open && (
@@ -111,7 +152,10 @@ export default function Header() {
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-3 text-sm text-zinc-300 transition-colors hover:bg-white/10 hover:text-zinc-50"
+                aria-current={active === link.href.slice(1) ? "location" : undefined}
+                className={`block rounded-lg px-3 py-3 text-sm transition-colors hover:bg-white/10 hover:text-zinc-50 ${
+                  active === link.href.slice(1) ? "bg-white/10 text-zinc-50" : "text-zinc-300"
+                }`}
               >
                 {link.label}
               </a>

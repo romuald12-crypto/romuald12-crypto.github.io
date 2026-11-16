@@ -62,7 +62,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href="#projets"
-                className="btn-gradient rounded-xl px-6 py-3.5 text-sm font-semibold text-white"
+                className="btn-gradient rounded-xl px-6 py-3.5 text-sm font-semibold text-[#fff]"
               >
                 <span className="relative z-10">Voir mes projets</span>
               </a>

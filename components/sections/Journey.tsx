@@ -50,7 +50,7 @@ export default function Journey() {
               >
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-7 h-[15px] w-[15px] rounded-full border-2 border-indigo-300 bg-[#05060f] shadow-[0_0_14px_3px_rgb(99_102_241/0.7)] md:left-1/2 md:-translate-x-1/2"
+                  className="absolute left-0 top-7 h-[15px] w-[15px] rounded-full border-2 border-indigo-300 bg-background shadow-[0_0_14px_3px_rgb(99_102_241/0.7)] md:left-1/2 md:-translate-x-1/2"
                 />
 
                 <Reveal
@@ -123,7 +123,7 @@ export default function Journey() {
                 className="absolute left-0 top-7 flex h-[15px] w-[15px] md:left-1/2 md:-translate-x-1/2"
               >
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                <span className="relative inline-flex h-[15px] w-[15px] rounded-full border-2 border-emerald-300 bg-[#05060f]" />
+                <span className="relative inline-flex h-[15px] w-[15px] rounded-full border-2 border-emerald-300 bg-background" />
               </span>
 
               <Reveal
@@ -143,7 +143,7 @@ export default function Journey() {
                   </p>
                   <a
                     href="#contact"
-                    className="btn-gradient mt-5 inline-flex rounded-xl px-5 py-3 text-sm font-semibold text-white"
+                    className="btn-gradient mt-5 inline-flex rounded-xl px-5 py-3 text-sm font-semibold text-[#fff]"
                   >
                     <span className="relative z-10">Me contacter</span>
                   </a>
@@ -166,7 +166,7 @@ export default function Journey() {
                   <TiltCard className="h-full p-6">
                     <article>
                       {item.logo && (
-                        <div className="mb-4 inline-block max-w-full overflow-hidden rounded-lg bg-white px-3 py-2">
+                        <div className="mb-4 inline-block max-w-full overflow-hidden rounded-lg bg-[#fff] px-3 py-2">
                           <Image
                             src={item.logo.src}
                             alt={item.logo.alt}

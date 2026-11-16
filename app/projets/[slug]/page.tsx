@@ -40,7 +40,7 @@ export default async function ProjectPage({
   return (
     <div className="relative isolate min-h-screen text-zinc-100">
       <Background />
-      <header className="border-b border-white/10 bg-[#05060f]/60 backdrop-blur-xl">
+      <header className="border-b border-white/10 bg-background/60 backdrop-blur-xl">
         <div className="mx-auto flex max-w-4xl items-center px-4 py-3 sm:px-6">
           <Link
             href="/#projets"
@@ -83,7 +83,7 @@ export default async function ProjectPage({
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gradient rounded-xl px-6 py-3.5 text-sm font-semibold text-white"
+              className="btn-gradient rounded-xl px-6 py-3.5 text-sm font-semibold text-[#fff]"
             >
               <span className="relative z-10">Voir le projet</span>
             </a>

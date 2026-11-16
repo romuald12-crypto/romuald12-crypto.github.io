@@ -19,7 +19,7 @@ export default function CompanyLogo({ name, logo }: { name: string; logo?: Logo 
     return (
       <div
         className={`mb-4 inline-block max-w-full overflow-hidden rounded-lg ${
-          logo.dark ? "bg-black" : "bg-white px-3 py-2"
+          logo.dark ? "bg-black" : "bg-[#fff] px-3 py-2"
         }`}
       >
         <Image
@@ -37,7 +37,7 @@ export default function CompanyLogo({ name, logo }: { name: string; logo?: Logo 
     <div
       role="img"
       aria-label={`Logo de ${name} (placeholder)`}
-      className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-white/15 bg-gradient-to-br from-sky-600 via-indigo-600 to-violet-700 font-display text-base font-bold text-white"
+      className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg border border-white/15 bg-gradient-to-br from-sky-600 via-indigo-600 to-violet-700 font-display text-base font-bold text-[#fff]"
     >
       {initials(name)}
     </div>
