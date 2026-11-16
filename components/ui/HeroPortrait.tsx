@@ -115,10 +115,10 @@ export default function HeroPortrait() {
         </span>
 
         <span className="pointer-events-none absolute -left-2 top-10 animate-float rounded-full border border-white/15 bg-[#0b0d1f]/80 px-4 py-2 text-xs font-medium text-sky-200 shadow-lg [transform:translateZ(60px)] md:-left-8">
-          Pentest
+          Full-Stack
         </span>
         <span className="pointer-events-none absolute -right-1 bottom-16 animate-float rounded-full border border-white/15 bg-[#0b0d1f]/80 px-4 py-2 text-xs font-medium text-violet-200 shadow-lg [animation-delay:-3s] [transform:translateZ(80px)]">
-          DevSecOps
+          Cloud &amp; Cybersécurité
         </span>
       </motion.div>
     </motion.div>

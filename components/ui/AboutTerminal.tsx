@@ -11,35 +11,34 @@ const commands: Command[] = [
     cmd: "whoami",
     output: [
       "Romuald Mbe Signe",
-      "Étudiant en Bachelor 3 Cybersécurité, ESAIP Angers",
+      "MSc Pro Ingénierie Informatique & Cybersécurité, Epitech Paris",
     ],
   },
   {
     cmd: "cat parcours.txt",
     output: [
       "2023-2025  IUC, Cameroun",
-      "2025-2026  ESAIP Angers, France",
-      "2026       Erasmus à BME Budapest, Hongrie",
+      "2025-2026  ESAIP Angers + Erasmus à BME Budapest",
+      "2026-2028  MSc Pro, Epitech Paris",
     ],
   },
   {
     cmd: "cat objectif.txt",
     output: [
-      "Alternance pour intégrer un Master en cybersécurité",
-      "Rythme : 2 semaines en entreprise, 2 semaines à l’école",
-      "Disponible immédiatement, mobile en France",
+      "Alternance ou stage, Île-de-France",
+      "Full-Stack, Cloud/CRM, IA & Cybersécurité",
+      "Mobilité nationale",
     ],
   },
   {
     cmd: "ls outils/",
-    output: ["kali  metasploit  nmap  wireshark", "sqlmap  john  docker  git"],
+    output: ["azure  dynamics365  docker  git", "react  nextjs  dotnet  n8n"],
   },
   {
     cmd: "ls langues/",
     output: [
       "français  courant",
-      "anglais   TOEIC 735 (mai 2025), EF SET C1",
-      "allemand  notions",
+      "anglais   professionnel courant (TOEIC 735, EF SET C1)",
     ],
   },
 ];

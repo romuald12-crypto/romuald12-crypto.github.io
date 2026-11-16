@@ -18,9 +18,9 @@ const poppins = Poppins({
   weight: ["600", "700"],
 });
 
-const title = "Romuald Mbe Signe | Cybersécurité – À la recherche d’une alternance";
+const title = "Romuald MBE SIGNE | Ingénieur Full-Stack, Cloud & Cybersécurité";
 const description =
-  "Portfolio de Romuald Mbe Signe, étudiant en cybersécurité à la recherche d’une alternance pour intégrer un Master en cybersécurité : pentest, DevSecOps et développement sécurisé. Disponible immédiatement.";
+  "Portfolio de Romuald MBE SIGNE, étudiant MSc Pro à Epitech Paris : développement full-stack et mobile, IA et automatisation, Cloud/CRM et cybersécurité. Disponible pour une alternance ou un stage en Île-de-France.";
 
 // Le logo (favicon, icône Apple) et l'image d'aperçu de lien sont les fichiers
 // icon.png, apple-icon.png et opengraph-image.png de ce dossier.

@@ -53,7 +53,7 @@ const icons: Record<string, React.ReactNode> = {
 };
 
 const subjects = [
-  "Proposition d’alternance",
+  "Proposition d’alternance ou de stage",
   "Demande d’entretien",
   "Question",
 ];
@@ -105,12 +105,10 @@ export default function Contact() {
         <div className="mt-12 grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <Reveal delay={0.1}>
             <p className="font-display text-2xl font-semibold leading-snug text-zinc-50">
-              À la recherche d’une alternance pour intégrer un Master en
-              cybersécurité, disponible immédiatement.
+              Disponible pour une alternance ou un stage en Île-de-France.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-              Basé à Angers, mobile dans toute la France. Rythme de 2 semaines
-              en entreprise et 2 semaines à l’école.
+              Mobilité sur toute la France. Réponse rapide par e-mail, téléphone ou WhatsApp.
             </p>
 
             <ul className="mt-8">

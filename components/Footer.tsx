@@ -31,15 +31,14 @@ export default function Footer() {
               Romuald Mbe Signe
             </p>
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-zinc-400">
-              Étudiant en Bachelor 3 Cybersécurité à l’ESAIP Angers. Pentest,
-              DevSecOps et développement sécurisé.
+              Ingénieur Informatique, Full-Stack, Cloud &amp; Cybersécurité. MSc Pro à Epitech Paris.
             </p>
             <p className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-4 py-1.5 text-sm font-medium text-emerald-200">
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
-              À la recherche d’une alternance pour un Master en cybersécurité
+              Disponible pour une alternance ou un stage
             </p>
             <p className="mt-3 text-sm text-zinc-500">
-              Disponible immédiatement, mobile dans toute la France.
+              Île-de-France, mobilité nationale.
             </p>
           </div>
 

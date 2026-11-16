@@ -60,7 +60,7 @@ export default function Header() {
           className="hidden min-h-11 items-center gap-2.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-4 text-sm font-medium text-emerald-200 transition-colors duration-300 hover:border-emerald-400/50 hover:text-emerald-100 xl:inline-flex"
         >
           <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
-          À la recherche d’une alternance
+          Alternance ou stage
         </a>
 
         <button
@@ -124,7 +124,7 @@ export default function Header() {
               className="flex items-center gap-2.5 rounded-lg px-3 py-3 text-sm font-medium text-emerald-200 transition-colors hover:bg-white/10"
             >
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-400" />
-              À la recherche d’une alternance
+              Disponible : alternance ou stage
             </a>
           </li>
         </motion.ul>

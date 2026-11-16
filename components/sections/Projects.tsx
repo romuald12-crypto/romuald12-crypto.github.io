@@ -2,20 +2,13 @@
 
 import { useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import FilterBar, { type DomainFilter } from "@/components/ui/FilterBar";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TiltCard from "@/components/ui/TiltCard";
+import { domains, profiles, projects, type Project } from "@/data/portfolio";
 
-const categories = [
-  "Cybersécurité",
-  "Développement",
-  "Expérience",
-  "Académique",
-] as const;
-
-type Category = (typeof categories)[number];
-
-const githubProfile = "https://github.com/romuald12-crypto";
+const githubProfile = profiles.find((p) => p.label === "GitHub")!.href;
 
 function GithubIcon({ size = 18 }: { size?: number }) {
   return (
@@ -31,162 +24,6 @@ function GithubIcon({ size = 18 }: { size?: number }) {
     </svg>
   );
 }
-
-type Project = {
-  title: string;
-  categories: Category[];
-  github?: string;
-  description: string;
-  highlights?: string[];
-  tags: string[];
-  href?: string;
-  status?: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "TAMYCS Shield - Secure PassVault",
-    categories: ["Cybersécurité", "Académique"],
-    github: "https://github.com/oumar771/tamycs-shield",
-    description:
-      "Gestionnaire de mots de passe sécurisé, réalisé en équipe à l’ESAIP dans le cadre du cours Secure Programming.",
-    highlights: [
-      "Coffre-fort chiffré en AES-256-GCM, authentification JWT et bcrypt.",
-      "Politique de mots de passe conforme ANSSI, protection contre le brute force et le XSS.",
-      "Générateur de mots de passe et export CSV / JSON.",
-    ],
-    tags: ["Node.js", "Express", "MongoDB", "JWT", "AES-256-GCM"],
-    href: "https://tamycs-shield.vercel.app",
-    status: "Projet d’équipe – ESAIP 2026",
-  },
-  {
-    title: "CEH Practical Labs - Ethical Hacking",
-    categories: ["Cybersécurité"],
-    github: githubProfile,
-    description:
-      "Labs pratiques des modules 11 à 20 du programme Certified Ethical Hacker (CEH) : des techniques offensives documentées et reproductibles.",
-    highlights: [
-      "Exploitation web : injection SQL, XSS et session hijacking.",
-      "Cryptographie, password cracking et évasion IDS / firewall.",
-      "Environnements de test : Kali Linux, Metasploitable 2 et DVWA.",
-    ],
-    tags: [
-      "Kali Linux",
-      "Metasploit",
-      "Nmap",
-      "Wireshark",
-      "SQLmap",
-      "John the Ripper",
-      "OpenSSL",
-      "GPG",
-      "VirtualBox",
-    ],
-  },
-  {
-    title: "Camtel - Technicien Réseau & Infrastructure",
-    categories: ["Expérience"],
-    description:
-      "Administration et support d’infrastructure réseau en environnement professionnel chez Camtel (Cameroon Telecommunications), pendant 3 mois.",
-    highlights: [
-      "Maintenance de l’infrastructure : serveurs, routeurs, switchs.",
-      "Diagnostic et résolution de problèmes réseau, support utilisateurs et assistance technique.",
-      "Surveillance de l’infrastructure et des logs.",
-      "Rédaction de documentation technique et de procédures.",
-      "Développement d’applications web internes.",
-    ],
-    tags: [
-      "Administration réseau",
-      "Troubleshooting infrastructure",
-      "Support niveau 2/3",
-      "Documentation technique",
-    ],
-    status: "Juillet – Septembre 2023",
-  },
-  {
-    title: "Rainalyse Beauté",
-    categories: ["Développement", "Cybersécurité"],
-    github: githubProfile,
-    description:
-      "Plateforme de réservation pour services beauté et coiffure : choix du service, du personnel et du créneau, paiement de l’acompte, espace client et espace d’administration.",
-    highlights: [
-      "Réservation : disponibilités par personnel et par créneau, liste d’attente, politique d’acompte et d’annulation.",
-      "Intégration Stripe et PayPal, factures PDF avec QR code de vérification.",
-      "Sécurité : Row Level Security, autorisations par rôle vérifiées côté serveur, en-têtes de sécurité (CSP, HSTS).",
-      "Correction d’une faille d’escalade de privilèges : rôles déplacés de user_metadata vers app_metadata.",
-      "64 tests unitaires avec Vitest.",
-    ],
-    tags: [
-      "Next.js 16",
-      "React 19",
-      "TypeScript",
-      "Tailwind CSS v4",
-      "Supabase",
-      "PostgreSQL",
-      "Stripe",
-      "PayPal",
-      "Vitest",
-    ],
-    status: "En développement",
-  },
-  {
-    title: "Gestion de Dépenses - Écosystème Microsoft",
-    categories: ["Expérience", "Développement"],
-    github: githubProfile,
-    description:
-      "Application complète de gestion de dépenses réalisée en stage chez KARAYES GROUP sur Microsoft Power Platform. Gestion des budgets, tracking dépenses, rapports automatisés.",
-    highlights: [
-      "Application Canvas responsive (PC et mobile) en Power Fx, avec upload de justificatifs et modèle de données relationnel dans Dataverse.",
-      "Sécurité : SSO avec Microsoft Entra ID, RBAC à trois rôles (Employé, Manager, Administrateur), principe du moindre privilège.",
-      "Automatisation : flux Power Automate avec e-mails transactionnels et analyse de sentiment via AI Builder.",
-      "Reporting Power BI : mesures DAX, cartes KPI et visuels interactifs.",
-      "Projet mené en Agile, de l’analyse des besoins en UML jusqu’aux tests.",
-    ],
-    tags: [
-      "Power Apps",
-      "Power Fx",
-      "Dataverse",
-      "Power Automate",
-      "AI Builder",
-      "Power BI",
-      "Power Pages",
-      "Microsoft Entra ID",
-      "Dynamics 365",
-      "Azure",
-      ".NET",
-    ],
-    status: "Juillet – Septembre 2026",
-  },
-  {
-    title: "Phishing Risk Scorer",
-    categories: ["Cybersécurité", "Développement"],
-    github: "https://github.com/Mbesigne/phishing-scorer",
-    description:
-      "Outil de détection de phishing : un moteur d’analyse en Python attribue un score de risque à une URL ou à un e-mail, avec une interface web et une extension Chrome pour Gmail et Outlook.",
-    highlights: [
-      "Dix vecteurs d’analyse : typosquattage, URL raccourcies, adresse IP directe, certificat SSL, langage d’urgence, contenu de la page.",
-      "Lecture des en-têtes SMTP (SPF, DKIM, DMARC) et vérification de réputation avec VirusTotal et Google Safe Browsing.",
-      "API REST Flask avec historique SQLite, analyse par lot et export CSV / JSON.",
-      "Extension Chrome (Manifest V3) qui ajoute un bouton d’analyse sur chaque e-mail.",
-    ],
-    tags: ["Python", "Flask", "SQLite", "Extension Chrome", "VirusTotal", "JavaScript"],
-    href: "https://phishing-risk-scorer-v2.onrender.com",
-    status: "Version 2",
-  },
-  {
-    title: "Simulation V2X (BME)",
-    categories: ["Académique"],
-    github: githubProfile,
-    description:
-      "Travaux pratiques du cours V2X Communication (BMEVIHIAV37) à BME Budapest : simulation de communications véhicule-à-tout et analyse de la charge du canal radio.",
-    highlights: [
-      "Simulations Artery/OMNeT++ exécutées dans Docker.",
-      "Comparaison du Channel Busy Ratio (CBR) à 50 % et 100 % de véhicules équipés.",
-      "Traitement des logs en Python, graphiques matplotlib et rapport technique en anglais.",
-    ],
-    tags: ["Artery", "OMNeT++", "Docker", "Python", "matplotlib"],
-    status: "TP terminé",
-  },
-];
 
 function ProjectCard({ project }: { project: Project }) {
   const [open, setOpen] = useState(false);
@@ -306,27 +143,24 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default function Projects() {
-  const [filter, setFilter] = useState<Category | null>(null);
+  const [filter, setFilter] = useState<DomainFilter>(null);
   const visible = filter
-    ? projects.filter((project) => project.categories.includes(filter))
+    ? projects.filter((project) => project.domains.includes(filter))
     : projects;
 
-  const filters: { label: string; value: Category | null; count: number }[] = [
-    { label: "Tous", value: null, count: projects.length },
-    ...categories.map((category) => ({
-      label: category,
-      value: category,
-      count: projects.filter((project) => project.categories.includes(category))
-        .length,
-    })),
-  ];
+  const counts = {
+    all: projects.length,
+    ...Object.fromEntries(
+      domains.map((d) => [d.id, projects.filter((p) => p.domains.includes(d.id)).length]),
+    ),
+  } as Record<"all" | (typeof domains)[number]["id"], number>;
 
   return (
     <section id="projets" className="scroll-mt-20 px-4 py-24 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="02"
-          title="Projets et expériences"
+          title="Projets"
           subtitle="Filtrez par domaine, puis ouvrez une carte pour voir le détail."
         />
 
@@ -334,33 +168,14 @@ export default function Projects() {
           delay={0.1}
           className="mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-4"
         >
-          <ul aria-label="Filtrer les projets" className="flex flex-wrap gap-2.5">
-            {filters.map((item) => {
-              const active = filter === item.value;
-
-              return (
-                <li key={item.label}>
-                  <button
-                    type="button"
-                    onClick={() => setFilter(item.value)}
-                    aria-pressed={active}
-                    className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-medium transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 ${
-                      active
-                        ? "border-sky-400/60 bg-sky-400/15 text-zinc-50"
-                        : "border-white/10 bg-white/5 text-zinc-400 hover:border-white/25 hover:text-zinc-100"
-                    }`}
-                  >
-                    {item.label}
-                    <span className={active ? "text-sky-200" : "text-zinc-500"}>
-                      {item.count}
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+          <FilterBar
+            label="Filtrer les projets"
+            value={filter}
+            onChange={setFilter}
+            counts={counts}
+          />
           <a
-            href="https://github.com/romuald12-crypto"
+            href={githubProfile}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 text-sm font-medium text-zinc-100 transition-colors duration-300 hover:border-indigo-400/60 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
@@ -369,7 +184,7 @@ export default function Projects() {
             Voir mon GitHub
           </a>
           <p aria-live="polite" className="sr-only">
-            {visible.length} réalisations affichées
+            {visible.length} projets affichés
           </p>
         </Reveal>
 

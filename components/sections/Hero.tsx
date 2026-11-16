@@ -1,18 +1,13 @@
 import HeroPortrait from "@/components/ui/HeroPortrait";
 import Reveal from "@/components/ui/Reveal";
 import ScrambleText from "@/components/ui/ScrambleText";
+import { cvHref, identity, profiles } from "@/data/portfolio";
 
 const facts = [
-  { label: "Formation", value: "Bachelor 3 Cybersécurité (ESAIP Angers)" },
-  { label: "Objectif", value: "Master en cybersécurité, en alternance" },
-  { label: "Rythme", value: "2 semaines en entreprise, 2 semaines à l’école" },
-  { label: "Mobilité", value: "Toute la France" },
-];
-
-const profiles = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/mbe-romuald" },
-  { label: "GitHub", href: "https://github.com/romuald12-crypto" },
-  { label: "TryHackMe", href: "https://tryhackme.com/p/romualddior86" },
+  { label: "Formation", value: identity.status },
+  { label: "Disponibilité", value: identity.availability },
+  { label: "Localisation", value: identity.location },
+  { label: "Langues", value: identity.languages },
 ];
 
 export default function Hero() {
@@ -29,28 +24,25 @@ export default function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
-              À la recherche d’une alternance, disponible immédiatement
+              {identity.availability}
             </p>
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="font-display text-4xl font-bold tracking-tight text-zinc-50 md:text-6xl">
               <ScrambleText
-                text="Romuald Mbe Signe"
+                text={identity.name}
                 className="text-gradient text-gradient-animated"
               />
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-4 text-xl text-slate-300 md:text-2xl">
-              Étudiant en Cybersécurité | Pentest &amp; DevSecOps
+              {identity.title}
             </p>
           </Reveal>
           <Reveal delay={0.24}>
             <p className="mt-6 max-w-[58ch] text-base leading-relaxed text-slate-400 md:text-lg">
-              À la recherche d’une alternance pour intégrer un Master en
-              cybersécurité. Je pratique le pentest sur des labs et je sécurise
-              les applications que je développe : contrôle d’accès,
-              chiffrement, correction de failles.
+              {identity.subtitle}
             </p>
           </Reveal>
           <Reveal delay={0.28}>
@@ -81,7 +73,7 @@ export default function Hero() {
                 Me contacter
               </a>
               <a
-                href="/cv-romuald-mbe-signe.pdf"
+                href={cvHref}
                 download="CV-Romuald-Mbe-Signe.pdf"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-zinc-100 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-400/60 hover:bg-white/10"
               >
