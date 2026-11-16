@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import CompanyLogo from "@/components/ui/CompanyLogo";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TiltCard from "@/components/ui/TiltCard";
@@ -24,7 +25,7 @@ export default function Journey() {
         <SectionHeading
           index="04"
           title="Expériences et formation"
-          subtitle="Cinq stages en entreprise, du réseau télécom au Cloud et à l’IA, puis un cursus d’ingénieur en informatique et cybersécurité."
+          subtitle="Des stages et une mission freelance, du réseau télécom au Cloud, au full-stack et à l’IA, puis un cursus en informatique et cybersécurité."
         />
 
         <div ref={timelineRef} className="relative mt-12">
@@ -49,7 +50,7 @@ export default function Journey() {
               >
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-7 h-[15px] w-[15px] rounded-full border-2 border-indigo-300 bg-[#05060f] shadow-[0_0_14px_3px_rgb(99_102_241/0.7)] md:left-1/2 md:-translate-x-1/2"
+                  className="absolute left-0 top-7 h-[15px] w-[15px] rounded-full border-2 border-indigo-300 bg-background shadow-[0_0_14px_3px_rgb(99_102_241/0.7)] md:left-1/2 md:-translate-x-1/2"
                 />
 
                 <Reveal
@@ -58,48 +59,56 @@ export default function Journey() {
                 >
                   <TiltCard className="p-6">
                     <article>
-                      {step.logo && (
-                        <div
-                          className={`mb-4 inline-block max-w-full overflow-hidden rounded-lg ${
-                            step.logo.dark ? "bg-black" : "bg-white px-3 py-2"
-                          }`}
-                        >
-                          <Image
-                            src={step.logo.src}
-                            alt={step.logo.alt}
-                            width={step.logo.width}
-                            height={step.logo.height}
-                            className="h-auto max-h-12 w-auto max-w-full"
-                          />
-                        </div>
+                      <CompanyLogo name={step.company} logo={step.logo} />
+                      {step.period && (
+                        <p className="font-mono text-xs uppercase tracking-widest text-sky-300">
+                          <time>{step.period}</time>
+                        </p>
                       )}
-                      <p className="font-mono text-xs uppercase tracking-widest text-sky-300">
-                        <time>{step.period}</time>
-                      </p>
                       <h3 className="mt-3 font-display text-lg font-semibold text-zinc-50">
                         {step.role}
                       </h3>
                       <p className="mt-1 text-sm font-medium text-indigo-200">
-                        {step.company}
-                      </p>
-                      <ul className="mt-4 space-y-2 text-sm leading-relaxed text-zinc-400">
-                        {step.points.map((point) => (
-                          <li key={point} className="flex items-start gap-2">
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-sky-400 to-violet-500" />
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
-                      <ul aria-label="Technologies" className="mt-5 flex flex-wrap gap-2">
-                        {step.tech.map((tech) => (
-                          <li
-                            key={tech}
-                            className="rounded-full border border-indigo-400/25 bg-indigo-400/10 px-3 py-1 text-xs text-indigo-100"
+                        {step.url ? (
+                          <a
+                            href={step.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex min-h-11 items-center gap-1.5 underline decoration-indigo-300/40 underline-offset-4 transition-colors hover:text-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
                           >
-                            {tech}
-                          </li>
-                        ))}
-                      </ul>
+                            {step.company}
+                            <span aria-hidden="true">↗</span>
+                            <span className="sr-only">(site de l’entreprise, nouvel onglet)</span>
+                          </a>
+                        ) : (
+                          step.company
+                        )}
+                        {step.place && (
+                          <span className="text-zinc-500"> · {step.place}</span>
+                        )}
+                      </p>
+                      {step.points.length > 0 && (
+                        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-zinc-400">
+                          {step.points.map((point) => (
+                            <li key={point} className="flex items-start gap-2">
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-sky-400 to-violet-500" />
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {step.tech.length > 0 && (
+                        <ul aria-label="Technologies" className="mt-5 flex flex-wrap gap-2">
+                          {step.tech.map((tech) => (
+                            <li
+                              key={tech}
+                              className="rounded-full border border-indigo-400/25 bg-indigo-400/10 px-3 py-1 text-xs text-indigo-100"
+                            >
+                              {tech}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </article>
                   </TiltCard>
                 </Reveal>
@@ -114,7 +123,7 @@ export default function Journey() {
                 className="absolute left-0 top-7 flex h-[15px] w-[15px] md:left-1/2 md:-translate-x-1/2"
               >
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                <span className="relative inline-flex h-[15px] w-[15px] rounded-full border-2 border-emerald-300 bg-[#05060f]" />
+                <span className="relative inline-flex h-[15px] w-[15px] rounded-full border-2 border-emerald-300 bg-background" />
               </span>
 
               <Reveal
@@ -134,7 +143,7 @@ export default function Journey() {
                   </p>
                   <a
                     href="#contact"
-                    className="btn-gradient mt-5 inline-flex rounded-xl px-5 py-3 text-sm font-semibold text-white"
+                    className="btn-gradient mt-5 inline-flex rounded-xl px-5 py-3 text-sm font-semibold text-[#fff]"
                   >
                     <span className="relative z-10">Me contacter</span>
                   </a>
@@ -157,7 +166,7 @@ export default function Journey() {
                   <TiltCard className="h-full p-6">
                     <article>
                       {item.logo && (
-                        <div className="mb-4 inline-block max-w-full overflow-hidden rounded-lg bg-white px-3 py-2">
+                        <div className="mb-4 inline-block max-w-full overflow-hidden rounded-lg bg-[#fff] px-3 py-2">
                           <Image
                             src={item.logo.src}
                             alt={item.logo.alt}

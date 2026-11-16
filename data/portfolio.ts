@@ -18,6 +18,8 @@ export const domains = [
   { id: "fullstack", label: "Full-Stack & Web" },
   { id: "ia", label: "IA & Automatisation" },
   { id: "cyber-cloud", label: "Cybersécurité & Cloud" },
+  { id: "iam", label: "IAM & Identité" },
+  { id: "devsecops", label: "DevSecOps" },
 ] as const;
 
 export type DomainId = (typeof domains)[number]["id"];
@@ -114,8 +116,12 @@ export const skillGroups: SkillGroup[] = [
 export type Experience = {
   role: string;
   company: string;
-  period: string;
+  // Site de l'entreprise : le lien n'est affiche que s'il est renseigne.
+  url?: string;
+  // Absent tant que la periode n'est pas confirmee.
+  period?: string;
   place?: string;
+  // Sans logo, un repli avec les initiales de l'entreprise est affiche.
   logo?: { src: string; alt: string; width: number; height: number; dark?: boolean };
   points: string[];
   tech: string[];
@@ -126,6 +132,8 @@ export const experiences: Experience[] = [
   {
     role: "Stagiaire Ingénieur Logiciel, Cloud & Cybersécurité",
     company: "KARAYES GROUP SARL",
+    place: "Douala, Cameroun",
+    // TODO url : site de Karayes Group.
     period: "Juillet 2026 – Octobre 2026",
     logo: { src: "/logos/karayes.png", alt: "Logo Karayes Group", width: 200, height: 200, dark: true },
     points: [
@@ -147,8 +155,21 @@ export const experiences: Experience[] = [
     ],
   },
   {
+    role: "Développeur web freelance",
+    company: "RainaLyse Beauté",
+    // TODO url : site en ligne de RainaLyse Beauté.
+    period: "Juillet 2026 – Septembre 2026",
+    points: [
+      "Conception et développement d’une plateforme de réservation pour services beauté et coiffure.",
+      "Paiement de l’acompte avec Stripe et PayPal, espace client et espace d’administration.",
+      "Sécurité : Row Level Security Supabase, autorisations par rôle vérifiées côté serveur.",
+    ],
+    tech: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "Tailwind CSS"],
+  },
+  {
     role: "Stagiaire Développeur Full-Stack & Mobile",
     company: "Ejara",
+    url: "https://www.ejara.africa",
     period: "Mai 2025 – Août 2025",
     points: [
       "Développement de nouvelles fonctionnalités front-end (React, TypeScript) et back-end (Node.js), ainsi que des évolutions mobiles Android.",
@@ -157,9 +178,10 @@ export const experiences: Experience[] = [
     tech: ["React", "TypeScript", "Node.js", "Android", "SQL", "APIs REST"],
   },
   {
-    role: "Stagiaire Développeur IA & Prototypage",
+    role: "Stagiaire Développeur IA — prototypes d’assistants LLM",
     company: "ActivSpaces",
-    period: "Juin 2024 – Août 2024",
+    url: "https://activspaces.com",
+    period: "Mai 2025 – Août 2025",
     points: [
       "Conception de preuves de concept (PoC) d’agents IA et de pipelines RAG basés sur les LLMs (Claude, GPT) et LangChain.",
       "Automatisation de workflows avec n8n et Make, et intégration via APIs REST.",
@@ -167,23 +189,32 @@ export const experiences: Experience[] = [
     tech: ["LLMs", "RAG", "LangChain", "n8n", "Make", "APIs REST"],
   },
   {
-    role: "Stagiaire Développeur Web Front-End & Outils Métiers",
+    role: "Stagiaire Développeur Front-End Flutter & Outils Métiers",
     company: "Sigalix",
+    // TODO url : site de Sigalix.
     period: "Juin 2024 – Août 2024",
     points: [
-      "Développement d’interfaces web responsives et maintenance évolutive d’outils métiers.",
+      "Développement d’interfaces front-end avec Flutter et maintenance évolutive d’outils métiers.",
     ],
-    tech: ["HTML5", "CSS3", "JavaScript", "React"],
+    tech: ["Flutter", "Dart"],
   },
   {
     role: "Stagiaire Technicien Réseaux & Infrastructures Télécoms",
     company: "CAMTEL (Cameroon Telecommunications)",
+    url: "https://www.camtel.cm",
     period: "Juillet 2023 – Septembre 2023",
     logo: { src: "/logos/camtel.png", alt: "Logo Camtel", width: 200, height: 200 },
     points: [
       "Déploiement, configuration et maintenance des infrastructures réseaux et des accès internet (fibre, ADSL, TCP/IP) sous Windows et Linux.",
     ],
     tech: ["TCP/IP", "Fibre", "ADSL", "Windows", "Linux"],
+  },
+  {
+    // A completer : poste, periode et missions.
+    role: "Stage",
+    company: "Afrimax Technology",
+    points: [],
+    tech: [],
   },
 ];
 
@@ -220,8 +251,17 @@ export const education: Education[] = [
 
 // --------------------------------------------------------------- Projets
 
+export type ProjectDetail = {
+  tagline: string;
+  sections: { title: string; points: string[] }[];
+  screenshots: { src: string; alt: string }[];
+};
+
 export type Project = {
+  // Identifiant de la page de détail : /projets/<slug>
+  slug: string;
   title: string;
+  detail?: ProjectDetail;
   domains: DomainId[];
   description: string;
   highlights?: string[];
@@ -235,6 +275,57 @@ const githubProfile = "https://github.com/romuald12-crypto";
 
 export const projects: Project[] = [
   {
+    slug: "kombiz",
+    title: "Kombiz — SaaS de gestion commerciale pour commerçants",
+    domains: ["fullstack", "cyber-cloud", "devsecops"],
+    description:
+      "Application de gestion commerciale (ex-Stock & Crédit) : suivi des stocks, des ventes et des crédits clients pour les petits commerçants.",
+    highlights: [
+      "Gestion des stocks, des ventes et des crédits clients.",
+      "Isolation des données par commerçant avec les politiques RLS de Supabase.",
+      "Tests unitaires avec Vitest et tests de bout en bout avec Playwright.",
+    ],
+    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "RLS", "Vitest", "Playwright"],
+    // TODO : remplacer par l'URL du site en ligne et le dépôt GitHub de Kombiz.
+    href: "https://example.com/kombiz",
+    github: githubProfile,
+    status: "SaaS",
+    detail: {
+      tagline: "Stocks, ventes et crédits clients, au même endroit.",
+      sections: [
+        {
+          title: "Architecture",
+          points: [
+            "Application Next.js (App Router) avec TypeScript, connectée à une base PostgreSQL hébergée sur Supabase.",
+            "Modèle de données relationnel : produits, mouvements de stock, ventes, clients et échéances de crédit.",
+            "Logique métier côté serveur, pour que les calculs (stock restant, solde client) ne dépendent pas du navigateur.",
+          ],
+        },
+        {
+          title: "Sécurité et Row Level Security",
+          points: [
+            "Chaque table est protégée par des politiques RLS : un commerçant ne lit et ne modifie que ses propres données.",
+            "Authentification Supabase et autorisations vérifiées côté serveur.",
+            "Aucune clé de service exposée au client.",
+          ],
+        },
+        {
+          title: "Tests automatisés",
+          points: [
+            "Vitest pour la logique métier : calculs de stock, de marges et de soldes de crédit.",
+            "Playwright pour les parcours complets : connexion, vente, enregistrement d'un crédit.",
+          ],
+        },
+      ],
+      screenshots: [
+        { src: "/projects/kombiz/capture-1.svg", alt: "Kombiz : tableau de bord (placeholder)" },
+        { src: "/projects/kombiz/capture-2.svg", alt: "Kombiz : gestion des stocks (placeholder)" },
+        { src: "/projects/kombiz/capture-3.svg", alt: "Kombiz : crédits clients (placeholder)" },
+      ],
+    },
+  },
+  {
+    slug: "mobifact",
     title: "MobiFact — Plateforme SaaS de facturation, devis et gestion client",
     domains: ["fullstack"],
     description:
@@ -248,6 +339,7 @@ export const projects: Project[] = [
     github: githubProfile,
   },
   {
+    slug: "agents-ia-mcp-rag",
     title: "Infrastructure d’agents IA métiers & connecteurs MCP / RAG",
     domains: ["ia"],
     description:
@@ -256,14 +348,16 @@ export const projects: Project[] = [
     github: githubProfile,
   },
   {
+    slug: "soar-power-bi",
     title: "Orchestration SOAR & dashboard Power BI de suivi des vulnérabilités",
-    domains: ["cyber-cloud"],
+    domains: ["cyber-cloud", "devsecops"],
     description:
       "Pipeline automatisé d’enrichissement d’alertes de sécurité et tableau de bord décisionnel centralisant les scores CVSS et la surface d’attaque.",
     tags: ["Python", "PowerShell", "Power BI", "APIs REST", "Nmap", "Wireshark"],
     github: githubProfile,
   },
   {
+    slug: "mobile-flutter-android",
     title: "Applications mobiles cross-platform & Android",
     domains: ["fullstack"],
     description:
@@ -272,8 +366,9 @@ export const projects: Project[] = [
     github: githubProfile,
   },
   {
+    slug: "tamycs-shield",
     title: "TAMYCS Shield — Secure PassVault",
-    domains: ["cyber-cloud", "fullstack"],
+    domains: ["cyber-cloud", "fullstack", "iam"],
     description:
       "Gestionnaire de mots de passe sécurisé, réalisé en équipe à l’ESAIP dans le cadre du cours Secure Programming.",
     highlights: [
@@ -287,8 +382,9 @@ export const projects: Project[] = [
     status: "Projet d’équipe – ESAIP 2026",
   },
   {
+    slug: "rainalyse-beaute",
     title: "Rainalyse Beauté",
-    domains: ["fullstack", "cyber-cloud"],
+    domains: ["fullstack", "cyber-cloud", "iam", "devsecops"],
     description:
       "Plateforme de réservation pour services beauté et coiffure : choix du service, du personnel et du créneau, paiement de l’acompte, espace client et espace d’administration.",
     highlights: [
@@ -302,6 +398,7 @@ export const projects: Project[] = [
     status: "En développement",
   },
   {
+    slug: "phishing-risk-scorer",
     title: "Phishing Risk Scorer",
     domains: ["cyber-cloud", "fullstack"],
     description:
@@ -317,6 +414,7 @@ export const projects: Project[] = [
     status: "Version 2",
   },
   {
+    slug: "ceh-labs",
     title: "CEH Practical Labs — Ethical Hacking",
     domains: ["cyber-cloud"],
     description:

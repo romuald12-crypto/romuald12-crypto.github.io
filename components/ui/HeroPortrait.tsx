@@ -81,7 +81,7 @@ export default function HeroPortrait() {
               sizes="(min-width: 768px) 320px, 100vw"
               className="object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#05060f]/70 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
           </div>
 
           <div
@@ -95,7 +95,7 @@ export default function HeroPortrait() {
               sizes="(min-width: 768px) 320px, 100vw"
               className="object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#05060f]/70 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
           </div>
         </motion.div>
 
@@ -109,15 +109,15 @@ export default function HeroPortrait() {
 
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/15 bg-[#0b0d1f]/80 px-3 py-1.5 text-[11px] font-medium text-zinc-200 [transform:translateZ(40px)]"
+          className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/15 bg-surface/80 px-3 py-1.5 text-[11px] font-medium text-zinc-200 [transform:translateZ(40px)]"
         >
           ↻ Cliquer pour retourner
         </span>
 
-        <span className="pointer-events-none absolute -left-2 top-10 animate-float rounded-full border border-white/15 bg-[#0b0d1f]/80 px-4 py-2 text-xs font-medium text-sky-200 shadow-lg [transform:translateZ(60px)] md:-left-8">
+        <span className="pointer-events-none absolute -left-2 top-10 animate-float rounded-full border border-white/15 bg-surface/80 px-4 py-2 text-xs font-medium text-sky-200 shadow-lg [transform:translateZ(60px)] md:-left-8">
           Full-Stack
         </span>
-        <span className="pointer-events-none absolute -right-1 bottom-16 animate-float rounded-full border border-white/15 bg-[#0b0d1f]/80 px-4 py-2 text-xs font-medium text-violet-200 shadow-lg [animation-delay:-3s] [transform:translateZ(80px)]">
+        <span className="pointer-events-none absolute -right-1 bottom-16 animate-float rounded-full border border-white/15 bg-surface/80 px-4 py-2 text-xs font-medium text-violet-200 shadow-lg [animation-delay:-3s] [transform:translateZ(80px)]">
           Cloud &amp; Cybersécurité
         </span>
       </motion.div>

@@ -235,7 +235,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="btn-gradient mt-6 inline-flex rounded-xl px-6 py-3.5 text-sm font-semibold text-white"
+                className="btn-gradient mt-6 inline-flex rounded-xl px-6 py-3.5 text-sm font-semibold text-[#fff]"
               >
                 <span className="relative z-10">Ouvrir dans votre messagerie</span>
               </button>

@@ -1,13 +1,57 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark;
   --background: #05060f;
   --foreground: #e4e4e7;
+  --surface: #0b0d1f;
+  --grid: rgb(255 255 255 / 0.04);
+  --halo: 1;
+
+  /* Gris secondaire un peu plus clair : contraste AA (4,5:1) sur le fond noir. */
+  --color-zinc-500: #8c8c96;
+  --color-slate-500: #8c8c96;
+}
+
+/* Theme clair : on redefinit les couleurs Tailwind utilisees par le site.
+   Les echelles zinc/slate sont inversees, les teintes claires (sky, indigo,
+   emerald, violet 100-300) deviennent des teintes foncees pour garder un
+   contraste AA sur fond clair. Le blanc translucide (bg-white/5, border-white/10)
+   devient un voile sombre. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #f6f7fb;
+  --foreground: #1f2937;
+  --surface: #ffffff;
+  --grid: rgb(15 23 42 / 0.06);
+  --halo: 0.45;
+
+  --color-white: #0f172a;
+
+  --color-zinc-50: #0b1020;
+  --color-zinc-100: #111827;
+  --color-zinc-200: #1f2937;
+  --color-zinc-300: #334155;
+  --color-zinc-400: #475569;
+  --color-zinc-500: #586377;
+  --color-slate-300: #334155;
+  --color-slate-400: #475569;
+  --color-slate-500: #586377;
+
+  --color-sky-200: #075985;
+  --color-sky-300: #0369a1;
+  --color-indigo-100: #3730a3;
+  --color-indigo-200: #3730a3;
+  --color-indigo-300: #4338ca;
+  --color-violet-200: #5b21b6;
+  --color-emerald-100: #064e3b;
+  --color-emerald-200: #065f46;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-poppins);
@@ -71,14 +115,20 @@ body {
   color: #fff;
 }
 
+:root[data-theme="light"] {
+  --grad-1: #0369a1;
+  --grad-2: #4338ca;
+  --grad-3: #7e22ce;
+}
+
 /* Texte en dégradé animé (titres) */
 .text-gradient {
   background-image: linear-gradient(
     100deg,
-    #7dd3fc 0%,
-    #818cf8 35%,
-    #c084fc 70%,
-    #7dd3fc 100%
+    var(--grad-1, #7dd3fc) 0%,
+    var(--grad-2, #818cf8) 35%,
+    var(--grad-3, #c084fc) 70%,
+    var(--grad-1, #7dd3fc) 100%
   );
   background-size: 220% 100%;
   -webkit-background-clip: text;
@@ -140,8 +190,8 @@ body {
 /* Grille de fond discrète, estompée vers les bords */
 .bg-grid {
   background-image:
-    linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
 }
