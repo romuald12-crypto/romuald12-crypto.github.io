@@ -18,11 +18,13 @@ export default function FilterBar({
 }) {
   const items: { label: string; value: DomainFilter; count: number }[] = [
     { label: "Tout", value: null, count: counts.all },
-    ...domains.map((domain) => ({
-      label: domain.label,
-      value: domain.id as DomainFilter,
-      count: counts[domain.id],
-    })),
+    ...domains
+      .filter((domain) => counts[domain.id] > 0)
+      .map((domain) => ({
+        label: domain.label,
+        value: domain.id as DomainFilter,
+        count: counts[domain.id],
+      })),
   ];
 
   return (

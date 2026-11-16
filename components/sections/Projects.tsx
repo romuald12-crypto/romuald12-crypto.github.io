@@ -107,9 +107,9 @@ function ProjectCard({ project }: { project: Project }) {
 
         {(project.href || project.github) && (
           <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-1">
-            {project.detail && (
+            {(
               <Link
-                href={`/projets/${project.detail.slug}`}
+                href={`/projets/${project.slug}`}
                 aria-label={`Page détaillée de ${project.title}`}
                 className="group/link inline-flex min-h-11 w-fit items-center gap-2 text-sm font-medium text-sky-200 transition-colors duration-300 hover:text-zinc-50"
               >
@@ -200,16 +200,27 @@ export default function Projects() {
         </Reveal>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          {visible.map((project, index) => (
-            <Reveal
-              key={project.title}
-              variant="flip"
-              delay={(index % 2) * 0.1}
-              className="h-full"
-            >
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
+          <AnimatePresence mode="popLayout" initial={false}>
+            {visible.map((project, index) => (
+              <motion.div
+                key={project.slug}
+                layout
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="h-full"
+              >
+                <Reveal
+                  variant="flip"
+                  delay={(index % 2) * 0.1}
+                  className="h-full"
+                >
+                  <ProjectCard project={project} />
+                </Reveal>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
         <Reveal delay={0.1} className="mt-10">

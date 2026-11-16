@@ -18,6 +18,8 @@ export const domains = [
   { id: "fullstack", label: "Full-Stack & Web" },
   { id: "ia", label: "IA & Automatisation" },
   { id: "cyber-cloud", label: "Cybersécurité & Cloud" },
+  { id: "iam", label: "IAM & Identité" },
+  { id: "devsecops", label: "DevSecOps" },
 ] as const;
 
 export type DomainId = (typeof domains)[number]["id"];
@@ -250,13 +252,14 @@ export const education: Education[] = [
 // --------------------------------------------------------------- Projets
 
 export type ProjectDetail = {
-  slug: string;
   tagline: string;
   sections: { title: string; points: string[] }[];
   screenshots: { src: string; alt: string }[];
 };
 
 export type Project = {
+  // Identifiant de la page de détail : /projets/<slug>
+  slug: string;
   title: string;
   detail?: ProjectDetail;
   domains: DomainId[];
@@ -272,8 +275,9 @@ const githubProfile = "https://github.com/romuald12-crypto";
 
 export const projects: Project[] = [
   {
+    slug: "kombiz",
     title: "Kombiz — SaaS de gestion commerciale pour commerçants",
-    domains: ["fullstack", "cyber-cloud"],
+    domains: ["fullstack", "cyber-cloud", "devsecops"],
     description:
       "Application de gestion commerciale (ex-Stock & Crédit) : suivi des stocks, des ventes et des crédits clients pour les petits commerçants.",
     highlights: [
@@ -287,7 +291,6 @@ export const projects: Project[] = [
     github: githubProfile,
     status: "SaaS",
     detail: {
-      slug: "kombiz",
       tagline: "Stocks, ventes et crédits clients, au même endroit.",
       sections: [
         {
@@ -322,6 +325,7 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "mobifact",
     title: "MobiFact — Plateforme SaaS de facturation, devis et gestion client",
     domains: ["fullstack"],
     description:
@@ -335,6 +339,7 @@ export const projects: Project[] = [
     github: githubProfile,
   },
   {
+    slug: "agents-ia-mcp-rag",
     title: "Infrastructure d’agents IA métiers & connecteurs MCP / RAG",
     domains: ["ia"],
     description:
@@ -343,14 +348,16 @@ export const projects: Project[] = [
     github: githubProfile,
   },
   {
+    slug: "soar-power-bi",
     title: "Orchestration SOAR & dashboard Power BI de suivi des vulnérabilités",
-    domains: ["cyber-cloud"],
+    domains: ["cyber-cloud", "devsecops"],
     description:
       "Pipeline automatisé d’enrichissement d’alertes de sécurité et tableau de bord décisionnel centralisant les scores CVSS et la surface d’attaque.",
     tags: ["Python", "PowerShell", "Power BI", "APIs REST", "Nmap", "Wireshark"],
     github: githubProfile,
   },
   {
+    slug: "mobile-flutter-android",
     title: "Applications mobiles cross-platform & Android",
     domains: ["fullstack"],
     description:
@@ -359,8 +366,9 @@ export const projects: Project[] = [
     github: githubProfile,
   },
   {
+    slug: "tamycs-shield",
     title: "TAMYCS Shield — Secure PassVault",
-    domains: ["cyber-cloud", "fullstack"],
+    domains: ["cyber-cloud", "fullstack", "iam"],
     description:
       "Gestionnaire de mots de passe sécurisé, réalisé en équipe à l’ESAIP dans le cadre du cours Secure Programming.",
     highlights: [
@@ -374,8 +382,9 @@ export const projects: Project[] = [
     status: "Projet d’équipe – ESAIP 2026",
   },
   {
+    slug: "rainalyse-beaute",
     title: "Rainalyse Beauté",
-    domains: ["fullstack", "cyber-cloud"],
+    domains: ["fullstack", "cyber-cloud", "iam", "devsecops"],
     description:
       "Plateforme de réservation pour services beauté et coiffure : choix du service, du personnel et du créneau, paiement de l’acompte, espace client et espace d’administration.",
     highlights: [
@@ -389,6 +398,7 @@ export const projects: Project[] = [
     status: "En développement",
   },
   {
+    slug: "phishing-risk-scorer",
     title: "Phishing Risk Scorer",
     domains: ["cyber-cloud", "fullstack"],
     description:
@@ -404,6 +414,7 @@ export const projects: Project[] = [
     status: "Version 2",
   },
   {
+    slug: "ceh-labs",
     title: "CEH Practical Labs — Ethical Hacking",
     domains: ["cyber-cloud"],
     description:

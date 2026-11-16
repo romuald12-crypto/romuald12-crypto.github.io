@@ -7,6 +7,10 @@
   --surface: #0b0d1f;
   --grid: rgb(255 255 255 / 0.04);
   --halo: 1;
+
+  /* Gris secondaire un peu plus clair : contraste AA (4,5:1) sur le fond noir. */
+  --color-zinc-500: #8c8c96;
+  --color-slate-500: #8c8c96;
 }
 
 /* Theme clair : on redefinit les couleurs Tailwind utilisees par le site.

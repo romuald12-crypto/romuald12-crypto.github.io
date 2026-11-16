@@ -5,14 +5,13 @@ import { notFound } from "next/navigation";
 import Background from "@/components/ui/Background";
 import { projects } from "@/data/portfolio";
 
-const detailed = projects.filter((project) => project.detail);
 
 export function generateStaticParams() {
-  return detailed.map((project) => ({ slug: project.detail!.slug }));
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 function find(slug: string) {
-  return detailed.find((project) => project.detail!.slug === slug);
+  return projects.find((project) => project.slug === slug);
 }
 
 export async function generateMetadata({
@@ -34,8 +33,12 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const project = find((await params).slug);
-  if (!project?.detail) notFound();
+  if (!project) notFound();
   const { detail } = project;
+  // Sans sections dediees, on presente les points cles du projet.
+  const sections =
+    detail?.sections ??
+    (project.highlights ? [{ title: "Points clés", points: project.highlights }] : []);
 
   return (
     <div className="relative isolate min-h-screen text-zinc-100">
@@ -61,7 +64,7 @@ export default async function ProjectPage({
         <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-zinc-50 md:text-5xl">
           {project.title}
         </h1>
-        <p className="mt-3 text-lg text-sky-200">{detail.tagline}</p>
+        {detail && <p className="mt-3 text-lg text-sky-200">{detail.tagline}</p>}
         <p className="mt-5 max-w-[65ch] leading-relaxed text-zinc-300">
           {project.description}
         </p>
@@ -100,6 +103,7 @@ export default async function ProjectPage({
           )}
         </div>
 
+        {detail && detail.screenshots.length > 0 && (
         <section aria-labelledby="captures" className="mt-14">
           <h2 id="captures" className="font-display text-2xl font-semibold text-zinc-50">
             Captures d’écran
@@ -122,9 +126,10 @@ export default async function ProjectPage({
             ))}
           </ul>
         </section>
+        )}
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {detail.sections.map((section) => (
+          {sections.map((section) => (
             <section
               key={section.title}
               className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-6"
