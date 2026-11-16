@@ -220,8 +220,16 @@ export const education: Education[] = [
 
 // --------------------------------------------------------------- Projets
 
+export type ProjectDetail = {
+  slug: string;
+  tagline: string;
+  sections: { title: string; points: string[] }[];
+  screenshots: { src: string; alt: string }[];
+};
+
 export type Project = {
   title: string;
+  detail?: ProjectDetail;
   domains: DomainId[];
   description: string;
   highlights?: string[];
@@ -234,6 +242,56 @@ export type Project = {
 const githubProfile = "https://github.com/romuald12-crypto";
 
 export const projects: Project[] = [
+  {
+    title: "Kombiz — SaaS de gestion commerciale pour commerçants",
+    domains: ["fullstack", "cyber-cloud"],
+    description:
+      "Application de gestion commerciale (ex-Stock & Crédit) : suivi des stocks, des ventes et des crédits clients pour les petits commerçants.",
+    highlights: [
+      "Gestion des stocks, des ventes et des crédits clients.",
+      "Isolation des données par commerçant avec les politiques RLS de Supabase.",
+      "Tests unitaires avec Vitest et tests de bout en bout avec Playwright.",
+    ],
+    tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "RLS", "Vitest", "Playwright"],
+    // TODO : remplacer par l'URL du site en ligne et le dépôt GitHub de Kombiz.
+    href: "https://example.com/kombiz",
+    github: githubProfile,
+    status: "SaaS",
+    detail: {
+      slug: "kombiz",
+      tagline: "Stocks, ventes et crédits clients, au même endroit.",
+      sections: [
+        {
+          title: "Architecture",
+          points: [
+            "Application Next.js (App Router) avec TypeScript, connectée à une base PostgreSQL hébergée sur Supabase.",
+            "Modèle de données relationnel : produits, mouvements de stock, ventes, clients et échéances de crédit.",
+            "Logique métier côté serveur, pour que les calculs (stock restant, solde client) ne dépendent pas du navigateur.",
+          ],
+        },
+        {
+          title: "Sécurité et Row Level Security",
+          points: [
+            "Chaque table est protégée par des politiques RLS : un commerçant ne lit et ne modifie que ses propres données.",
+            "Authentification Supabase et autorisations vérifiées côté serveur.",
+            "Aucune clé de service exposée au client.",
+          ],
+        },
+        {
+          title: "Tests automatisés",
+          points: [
+            "Vitest pour la logique métier : calculs de stock, de marges et de soldes de crédit.",
+            "Playwright pour les parcours complets : connexion, vente, enregistrement d'un crédit.",
+          ],
+        },
+      ],
+      screenshots: [
+        { src: "/projects/kombiz/capture-1.svg", alt: "Kombiz : tableau de bord (placeholder)" },
+        { src: "/projects/kombiz/capture-2.svg", alt: "Kombiz : gestion des stocks (placeholder)" },
+        { src: "/projects/kombiz/capture-3.svg", alt: "Kombiz : crédits clients (placeholder)" },
+      ],
+    },
+  },
   {
     title: "MobiFact — Plateforme SaaS de facturation, devis et gestion client",
     domains: ["fullstack"],

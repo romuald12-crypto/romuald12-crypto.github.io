@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import FilterBar, { type DomainFilter } from "@/components/ui/FilterBar";
@@ -106,6 +107,16 @@ function ProjectCard({ project }: { project: Project }) {
 
         {(project.href || project.github) && (
           <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-1">
+            {project.detail && (
+              <Link
+                href={`/projets/${project.detail.slug}`}
+                aria-label={`Page détaillée de ${project.title}`}
+                className="group/link inline-flex min-h-11 w-fit items-center gap-2 text-sm font-medium text-sky-200 transition-colors duration-300 hover:text-zinc-50"
+              >
+                Page détaillée
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+              </Link>
+            )}
             {project.href && (
               <a
                 href={project.href}

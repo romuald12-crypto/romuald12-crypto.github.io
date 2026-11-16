@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1230"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient></defs>
+<rect width="1280" height="800" fill="url(#g)"/>
+<rect x="40" y="40" width="1200" height="48" rx="10" fill="#fff" fill-opacity=".08"/>
+<rect x="40" y="112" width="260" height="648" rx="12" fill="#fff" fill-opacity=".06"/>
+<rect x="324" y="112" width="916" height="200" rx="12" fill="#fff" fill-opacity=".06"/>
+<rect x="324" y="336" width="450" height="424" rx="12" fill="#fff" fill-opacity=".06"/>
+<rect x="790" y="336" width="450" height="424" rx="12" fill="#fff" fill-opacity=".06"/>
+<text x="640" y="420" text-anchor="middle" font-family="sans-serif" font-size="44" fill="#e0e7ff">Kombiz - Tableau de bord</text>
+<text x="640" y="470" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#a5b4fc">Capture à fournir (capture-1)</text>
+</svg>
